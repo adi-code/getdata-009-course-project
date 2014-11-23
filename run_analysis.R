@@ -2,6 +2,9 @@
 # Getting and Cleaning Data (Courser)
 # getdata-009
 
+# Load plyr library to use ddply() and join() functions.
+library(plyr)
+
 # A path to a directory that contains the original dataset.
 dataDir <- "getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset"
 
@@ -198,7 +201,10 @@ extractMeanAndStd <- function(mergedDir) {
         # Read values for the "activity" variable.
         yFilePath <- file.path(mergedDir, "y_merged.txt")
         y <- read.csv(yFilePath, sep=" ", header=F, col.names=c("nr"))
-        yActivities <- merge(y, activityLabels, by.x="nr", by.y="nr")
+
+        # Use descritive values for the "activity" variable.
+        # Merge data frames using join() from the plyr package.
+        yActivities <- join(y, activityLabels, by="nr")
         
         # Read values for the rest.
         xFilePath <- file.path(mergedDir, "X_merged.txt")
@@ -230,9 +236,6 @@ extractMeanAndStd <- function(mergedDir) {
 # This function computes the average for each variable for each pair
 # ("activity", "subject") that occurs in the processed dataset.
 meanForSubjectAndActivity <- function(mergedDir, fileName) {
-        # Load plyr library to use ddply() function.
-        library(plyr)
-
         # Read the processed data.
         filePath <- file.path(mergedDir, fileName)
         featureValues <- read.csv(filePath, sep=" ")

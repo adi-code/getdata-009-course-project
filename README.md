@@ -5,6 +5,9 @@ This repo contains files for Course Project from Getting and Cleaning Data from 
 
 The purpose of this script is to merge "test" and "train" dataset, to extract required information (the mean and the standard deviation), to use descriptive values for "activity" variable, to make descriptive labels for each variable and to compute the average for each variable for each pair ("activity", "subject") that occurs in the dataset.
 
+## Dataset
+The dataset is described in CodeBook.md.
+
 ## Description
 
 Only one script is used to perform the processing named "run_analysis.R". It contains several variables and functions.

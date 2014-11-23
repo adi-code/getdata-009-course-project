@@ -1,23 +1,28 @@
 #  The CodeBook
 
 ## Introduction
+
 This data is used for "Getting and Cleaning Data" from Coursera. The original
 data can be downloaded from http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.
 
-This data comes from experiments carried out by Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto from Smartlab - Non Linear Complex Systems Laboratory. They aquired measurements from inertial sensors (accelerometer, gyroscope), which were built into Samsung Galaxy S II smartphones used by 30 volunteers. After that some features were computed. For more information please read README.txt from http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.zip.
+This data comes from experiments carried out by Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto from Smartlab - Non Linear Complex Systems Laboratory. They aquired measurements from inertial sensors (accelerometer, gyroscope), which were built into Samsung Galaxy S II smartphones used by 30 volunteers. After filtering some features were computed. For more information please read README.txt from http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.zip.
 
 ## Description
-In this case both the training and testing data were merged and only several features were extracted (these, which were described as a mean, a standard deviation or a frequency mean).
+
+In this case both the training and the testing data were merged and only several features were extracted (these, which were described as a mean, a standard deviation or a frequency mean).
 
 If the feature name starts with "time", it was computed using a time domain analysis, similarily if the feature name starts with "frequency", it was computed using a frequency domain analysis. There are two groups of data: a body and a gravity. These two groups were extracted from the raw data using a Butterworth filter. As mentioned above, two inertial sensors were used: an accelerometer and a gyroscope. Several variables were computed: X, Y, Z stand for direction, Magnitude were computed using the Euclidean norm and the body linear acceleration and angular velocity were derived in time to obtain Jerk signals. Frequency domain features were computed using Fast Fourier Transform.
 
+Apart from the "activity" which is a string and the "subject" which is the number from 1 to 30, all features are normalized and bounded within [-1,1].
+
 ## Feature list
+
 There are following features in the dataset:
 
 Feature | Domain | Device | Group | Value type | Comment
 --- | --- | --- | --- | --- | ---
-activity | NA | NA | NA | NA | activity
-subject | NA | NA | NA | NA | subject
+activity | NA | NA | NA | NA | an activity that the volunteer performed
+subject | NA | NA | NA | NA | an identifier of the subject who carried out the experiment (from 1 to 30)
 timeBodyAccelerometerMeanX | time | accelerometer | body | mean | x direction
 timeBodyAccelerometerMeanY | time | accelerometer | body | mean | y direction
 timeBodyAccelerometerMeanZ | time | accelerometer | body | mean | z direction
@@ -99,8 +104,14 @@ frequencyBodyGyroscopeJerkMagnitudeStandardDeviation | frequency | gyroscope | b
 frequencyBodyGyroscopeJerkMagnitudeMeanFrequency | frequency | gyroscope | body | mean frequency | magnitude (jerk)
 
 ## Processing path
+
 1. Merging data from both test and train datasets.
 2. Extracting features on the mean and the standard deviation (without angle() variables).
 3. Using descriptive labels for each variable.
 4. Using descriptive values for the "activity" variable.
 5. Computing the average of each variable for every pair (activity, subject) that occurs in the dataset.
+
+## Files
+
+* cleaned/cleaned_data.txt - the merged, extracted and described dataset that contains all features described above (after step 4.)
+* cleaned/averages.txt - the list of averages for each variable for each pair ("activity", "subject") that occurs in the cleaned_data.txt file
