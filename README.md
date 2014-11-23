@@ -54,6 +54,7 @@ It also copies these files from the input:
 ## Processing
 
 All the processing is done by calling:
+
 1. prepareMergedData(targetDir)
 2. cleanMergedData(targetDir)
 3. mergeData(dataDir, targetDir)
