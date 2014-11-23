@@ -13,7 +13,7 @@ In this case both the training and the testing data were merged and only several
 
 If the feature name starts with "time", it was computed using a time domain analysis, similarily if the feature name starts with "frequency", it was computed using a frequency domain analysis. There are two groups of data: a body and a gravity. These two groups were extracted from the raw data using a Butterworth filter. As mentioned above, two inertial sensors were used: an accelerometer and a gyroscope. Several variables were computed: X, Y, Z stand for direction, Magnitude were computed using the Euclidean norm and the body linear acceleration and angular velocity were derived in time to obtain Jerk signals. Frequency domain features were computed using Fast Fourier Transform.
 
-Apart from the "activity" which is a string and the "subject" which is the number from 1 to 30, all features are normalized and bounded within [-1,1].
+Apart from the "activity" which is a string and the "subject" which is a number from 1 to 30, all features are normalized and bounded within [-1,1].
 
 ## Feature list
 
